@@ -1,31 +1,39 @@
 {
-    "name": "mouf/utils.i18n.fine.symfony-bridge",
-    "description": "This package contains a bridge between the Symfony TranslatorInterface and FINE. Using this package, FINE can implement Symfony's TranslatorInterface and therefore, can be used with any Symfony component using this interface",
-    "keywords": ["i18n", "internationalisation", "fine", "mouf", "symfony2", "bridge"],
-    "homepage": "https://mouf-php.com/packages/mouf/utils.i18n.fine.symfony-bridge",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "David Négrier",
-            "email": "d.negrier@thecodingmachine.com",
-            "homepage": "http://mouf-php.com"
-        }        
-    ],
-    "require": {
-    	"php": ">=5.3.0"
-    },
-    "autoload": {
-        "psr-0": {
-            "Mouf\\Utils\\I18n\\Fine\\Bridge": "src/"
-        }
-    },
-    "mouf": {
-    	"install": [{
-			"type" : "class",
-			"class" : "Mouf\\Utils\\I18n\\Fine\\Bridge\\SymfonyFineBridgeInstaller"
+	"name" : "mouf/utils.i18n.fine.symfony-bridge",
+	"description" : "This package contains a bridge between the Symfony TranslatorInterface and FINE. Using this package, FINE can implement Symfony's TranslatorInterface and therefore, can be used with any Symfony component using this interface",
+	"keywords" : [
+		"i18n",
+		"internationalisation",
+		"fine",
+		"mouf",
+		"symfony2",
+		"bridge"
+	],
+	"homepage" : "https://mouf-php.com/packages/mouf/utils.i18n.fine.symfony-bridge",
+	"type" : "mouf-library",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "David Négrier",
+			"email" : "d.negrier@thecodingmachine.com",
+			"homepage" : "http://mouf-php.com"
 		}
 	],
-	"logo" : "logo.png"
-    }
+	"require" : {
+		"php" : ">=5.3.0",
+		"mouf/utils.i18n.fine" : "~4.0",
+		"symfony/translation" : "~2.4"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Mouf\\Utils\\I18n\\Fine\\Bridge" : "src/"
+		}
+	},
+	"mouf" : {
+		"install" : [{
+				"type" : "class",
+				"class" : "Mouf\\Utils\\I18n\\Fine\\Bridge\\SymfonyFineBridgeInstaller"
+			}
+		],
+		"logo" : "logo.png"
+	}
 }
