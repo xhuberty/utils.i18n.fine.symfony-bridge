@@ -28,12 +28,14 @@
 			"Mouf\\Utils\\I18n\\Fine\\Bridge" : "src/"
 		}
 	},
-	"mouf" : {
-		"install" : [{
-				"type" : "class",
-				"class" : "Mouf\\Utils\\I18n\\Fine\\Bridge\\SymfonyFineBridgeInstaller"
-			}
-		],
-		"logo" : "logo.png"
+	"extra": {
+		"mouf" : {
+			"install" : [{
+					"type" : "class",
+					"class" : "Mouf\\Utils\\I18n\\Fine\\Bridge\\SymfonyFineBridgeInstaller"
+				}
+			],
+			"logo" : "logo.png"
+		}
 	}
 }
