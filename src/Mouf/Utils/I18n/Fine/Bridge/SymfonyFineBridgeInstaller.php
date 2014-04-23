@@ -5,7 +5,7 @@
  * See the file LICENSE.txt for copying permission.
  */
 
-namespace Mouf\Utils\Common\Doctrine\Annotations;
+namespace Mouf\Utils\I18n\Fine\Bridge;
 
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
