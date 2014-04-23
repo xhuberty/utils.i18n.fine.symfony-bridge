@@ -64,10 +64,11 @@ class SymfonyFineBridge implements TranslatorInterface {
 		// Note: $domain is ignored.
 		// Note: $locale is ignored.
 		array_unshift($parameters, $id);
+		// FIXME: hasTranslation is not part of the LanguageTranslationInterface interface
 		if ($this->translator->hasTranslation($id)) {
 			return call_user_func_array([$this->translator, 'getTranslation'], $parameters);
 		} else {
-			return false;
+			return self::interpolate($id, $parameters);
 		}
 		
 	}
@@ -91,5 +92,20 @@ class SymfonyFineBridge implements TranslatorInterface {
 	 */
 	public function getLocale() {
 		return $this->cascadingLanguageDetection->getLanguage();
+	}
+	
+	/**
+	 * Interpolates context values into the message placeholders.
+	 */
+	private static function interpolate($message, array $context = array())
+	{
+	    // build a replacement array with braces around the context keys
+	    $replace = array();
+	    foreach ($context as $key => $val) {
+	        $replace['%' . $key . '%'] = $val;
+	    }
+	
+	    // interpolate replacement values into the message and return
+	    return strtr($message, $replace);
 	}
 }
