@@ -49,11 +49,10 @@ class SymfonyFineBridge implements TranslatorInterface {
 		$this->translator = $translator;
 		$this->detector = $detector;
 		$this->fixedLanguageDetection = new FixedLanguageDetection();
-		$this->cascadingLanguageDetection = new CascadingLanguageDetection();
-		$this->cascadingLanguageDetection->languageDetectionServices = [
-			$this->fixedLanguageDetection,
-			$this->detector
-		];
+		$this->cascadingLanguageDetection = new CascadingLanguageDetection([
+            $this->fixedLanguageDetection,
+            $this->detector
+        ]);
 	}
 	
 	
