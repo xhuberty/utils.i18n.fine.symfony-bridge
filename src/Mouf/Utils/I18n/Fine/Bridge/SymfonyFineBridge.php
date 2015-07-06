@@ -21,7 +21,7 @@ use Mouf\Utils\I18n\Fine\Language\LanguageDetectionInterface;
 class SymfonyFineBridge implements TranslatorInterface {
 	
 	/**
-	 * @var LanguageTranslationInterface
+	 * @var TranslationInterface
 	 */
 	private $translator;
 	
@@ -45,7 +45,7 @@ class SymfonyFineBridge implements TranslatorInterface {
 	 */
 	private $cascadingLanguageDetection;
 	
-	public function __construct(LanguageTranslationInterface $translator, LanguageDetectionInterface $detector) {
+	public function __construct(TranslationInterface $translator, LanguageDetectionInterface $detector) {
 		$this->translator = $translator;
 		$this->detector = $detector;
 		$this->fixedLanguageDetection = new FixedLanguageDetection();
@@ -66,7 +66,7 @@ class SymfonyFineBridge implements TranslatorInterface {
 		array_unshift($parameters, $id);
 		// FIXME: hasTranslation is not part of the LanguageTranslationInterface interface
 		if ($this->translator->hasTranslation($id)) {
-			return call_user_func_array([$this->translator, 'getTranslation'], $parameters);
+			return $this->translator->getTranslation($id, $parameters);
 		} else {
 			return self::interpolate($id, $parameters);
 		}
