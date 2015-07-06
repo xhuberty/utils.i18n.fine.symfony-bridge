@@ -2,10 +2,10 @@
 namespace Mouf\Utils\I18n\Fine\Bridge;
 
 use Symfony\Component\Translation\TranslatorInterface;
+use Mouf\Utils\I18n\Fine\TranslatorInterface as MoufTranslatorInterface;
 use Mouf\Utils\I18n\Fine\Language\FixedLanguageDetection;
 use Mouf\Utils\I18n\Fine\Language\CascadingLanguageDetection;
-use Mouf\Utils\I18n\Fine\Translate\LanguageTranslationInterface;
-use Mouf\Utils\I18n\Fine\Language\LanguageDetectionInterface;
+use Mouf\Utils\I18n\Fine\LanguageDetectionInterface;
 
 /**
  * This class is a bridge between a FINE translation service and Symfony.
@@ -21,7 +21,7 @@ use Mouf\Utils\I18n\Fine\Language\LanguageDetectionInterface;
 class SymfonyFineBridge implements TranslatorInterface {
 	
 	/**
-	 * @var TranslationInterface
+	 * @var MoufTranslatorInterface
 	 */
 	private $translator;
 	
@@ -45,7 +45,7 @@ class SymfonyFineBridge implements TranslatorInterface {
 	 */
 	private $cascadingLanguageDetection;
 	
-	public function __construct(TranslationInterface $translator, LanguageDetectionInterface $detector) {
+	public function __construct(MoufTranslatorInterface $translator, LanguageDetectionInterface $detector) {
 		$this->translator = $translator;
 		$this->detector = $detector;
 		$this->fixedLanguageDetection = new FixedLanguageDetection();
